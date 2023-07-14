@@ -53,7 +53,7 @@ function onMessageHandler(channel, tags, message, self){
             }
             catch(err){
                 console.error(channel, tags.username, tags, message, self, err);
-                client.say(strErrMsg);
+                client.say(channel, strErrMsg);
             }
 
             break;
@@ -62,7 +62,7 @@ function onMessageHandler(channel, tags, message, self){
 
             try{
                 if(!fn.esBroadcaster(tags) && !fn.esMod(tags)){
-                    client.say(channel, `${tags.username} no puedes usar el comando !cuenta`);
+                    client.say(channel, `${tags.username} no puedes usar el comando !cuenta FootYellow`);
                     return;
                 }
 
@@ -88,6 +88,38 @@ function onMessageHandler(channel, tags, message, self){
                 client.say(channel, strErrMsg);
             }
             
+            break;
+
+        case '!timer':
+            try{
+                if(!fn.esBroadcaster(tags) && !fn.esMod(tags)){
+                    client.say(channel, `${tags.username} no puedes usar el comando !timer FootYellow`);
+                    return;
+                }
+
+                const minutes = 5;
+
+                fn.setTimer(client, channel, minutes*60);
+            }
+            catch(err){
+                console.error(err);
+                client.say(channel, strErrMsg);
+            }
+            break;
+
+        case '!stoptimer':
+            try{
+                if(!fn.esBroadcaster(tags) && !fn.esMod(tags)){
+                    client.say(channel, `${tags.username} no puedes usar el comando !timer FootYellow`);
+                    return;
+                }
+
+                fn.stopTimer(client, channel);
+            }
+            catch(err){
+                console.error(err);
+                client.say(channel, strErrMsg);
+            }
             break;
     }
 }
