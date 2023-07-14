@@ -83,7 +83,7 @@ module.exports = {
             const msg = 'ImTyping ';
             client.say(channel, `${msg} 0${duration/60} : 00`);
     
-            const inter = 5;
+            const inter = 20;
             const interMilis = inter * 1000;
     
             console.log(timers, timers.isTimerRunning(channel));
