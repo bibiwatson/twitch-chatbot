@@ -110,7 +110,7 @@ function onMessageHandler(channel, tags, message, self){
         case '!stoptimer':
             try{
                 if(!fn.esBroadcaster(tags) && !fn.esMod(tags)){
-                    client.say(channel, `${tags.username} no puedes usar el comando !timer FootYellow`);
+                    client.say(channel, `${tags.username} no puedes usar el comando !stoptimer FootYellow`);
                     return;
                 }
 
