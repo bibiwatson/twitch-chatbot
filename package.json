@@ -2,15 +2,16 @@
   "name": "twitch-chat-bot",
   "version": "1.2.0",
   "description": "",
-  "main": "app.js",
+  "main": "apptest.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node apptest.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "bibi watson",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.3.1",
+    "node-fetch": "^2.7.0",
     "tmi.js": "^1.8.5"
   }
 }

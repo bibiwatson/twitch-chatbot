@@ -121,6 +121,21 @@ function onMessageHandler(channel, tags, message, self){
                 client.say(channel, strErrMsg);
             }
             break;
+        
+      case '!clip':
+        try{
+          
+          if(!fn.esBroadcaster(tags) && !fn.esMod(tags)){
+              client.say(channel, `${tags.username} no puedes usar el comando !clip FootYellow`);
+              return;
+          }
+          
+          fn.createClip(client, channel);
+        }
+        catch(err){
+          console.error(err);
+          client.say('bibi_watson', strErrMsg);
+        }
     }
 }
 
@@ -140,7 +155,7 @@ function onRitualHandler(ritualName, channel, username, tags, msg){
 }
 
 function onNewChatterHandler(channel, username, tags, msg){
-    console.log('NEWCHATTER', {channel, usernamem, tags, msg});
+    console.log('NEWCHATTER', {channel, username, tags, msg});
 }
 
 function onPingHandler(){

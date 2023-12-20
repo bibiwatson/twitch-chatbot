@@ -1,4 +1,8 @@
-const timers = require('./timers')
+const fetch = require('node-fetch');
+const timers = require('./timers');
+
+require('dotenv').config();
+
 module.exports = {
         
     obtenerCanales: function(){
@@ -126,5 +130,19 @@ module.exports = {
             console.error(err);
             client.say(channel, 'Error al detener el timer WutFace');
         }
+    },
+  
+    createClip(client, channel){
+      client.say(channel, 'Creando clipsito, awanten ImTyping');
+      
+      fetch(`https://api.thefyrewire.com/twitch/clips/create/${process.env.CLIP_HASH}?channel=${channel.replace('#', '')}`)
+      .then(async res => {
+        const body = await res.text();
+        client.say(channel, body);
+      })
+      .catch(err => {
+        console.error(err);
+        client.say(channel, 'Error al crear el clip');
+      });
     }
 }
